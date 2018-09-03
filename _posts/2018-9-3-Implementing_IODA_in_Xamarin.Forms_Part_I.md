@@ -44,6 +44,11 @@ While the logic may be a bit contrived (I could not use our actual code for lega
 
 You might argue that `IsValidCustomer` actually *has* a dependency to an object from the same codebase (and so have `LoadCustomerByEMailAddress` and our other repository methods), but this is not a functional dependency. The `Customer` class is a pure **data** class with no logic on it's own.
 
-### The Integration Operation Data Architecture (IODA)
+### The Integration Operation Data **A**PI Architecture (IODA)
 
 While the IOSP can be seen as a principle that reflects itself in the design of methods (and classes to some extent), the IODA takes the principle to a higher level. 
+
+[![IODA Architecture schematic image][1]][2]
+
+[1]: http://lh4.ggpht.com/-VN9jIkfjGwk/VSlTdR4lNkI/AAAAAAAAFEs/qFMekxNNpcQ/image%25255B50%25255D.png?imgmax=800
+[2]: http://blog.ralfw.de/2015/04/die-ioda-architektur.html
