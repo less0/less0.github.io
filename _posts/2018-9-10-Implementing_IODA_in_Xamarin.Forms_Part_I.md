@@ -3,6 +3,7 @@ layout: post
 title:  "Implementing the IODA in Xamarin.Forms - I the basics"
 category: "Software"
 tags: ["architecture", "clean code"]
+draft: true
 ---
 
 Today I'd like to talk about how I implemented the IODA in a Xamarin.Forms app with Prism. The IODA (Integration Operation Data Architecture) is an architecture based on the Integration Operation Segregation Principle, proposed by the german [Clean Code Developer Initiative](http://clean-code-developer.de/) ([🇬🇧](http://clean-code-developer.com/)). In this first post I will explain the basics (briefly) to elaborate how we implemented it in our Xamarin.Forms app in the follow-up posts. 
