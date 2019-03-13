@@ -3,7 +3,7 @@ layout: post
 title:  "Angular App in Azure - Part I: Project outline"
 category: "Software"
 tags: ["architecture", "azure", "angular"]
-draft: true
+draft: false
 ---
 
 Developers love coffee and of course they love to explore new technologies (well, at least I do). I combined both and proudly present to you: *CoffeeFriends*. *CoffeeFriends* is a website ([^1]) to track your coffee consumption together with your peers. Like a social network ... with coffee.
