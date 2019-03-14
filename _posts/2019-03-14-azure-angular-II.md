@@ -49,6 +49,30 @@ Since I had a hard time deploying both my API and the Angular App to the same vi
 
 I've chosen the path *site\api* as the physical location of the application, but you are quite free to choose whatever you deem appropriate ([^1]). 
 
+Eventually this will (theoretically) make the API available at `https://<mysite>.azurewebsites.net/api`. Practically every route of the path `/api` was rewritten to `https://<mysite>.azurewebsites.net`, which rendered the API unusable. This required another change to my *web.config*:
+
+```xml
+<configuration>
+    <system.webServer>
+      <rewrite>
+        <rules>
+          <rule name="Angular" stopProcessing="true">
+            <match url=".*" />
+            <conditions logicalGrouping="MatchAll">
+              <add input="{REQUEST_URI}" pattern="^/api" negate="true" />
+              <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+              <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+            </conditions>
+            <action type="Rewrite" url="/" />
+          </rule>
+        </rules>
+      </rewrite>
+    </system.webServer>
+</configuration>
+```
+
+this adds an exception to the rewrite rule, preventing `/api` to be rewritten.
+
 ## Azure DevOps pipelines
 
 Azure DevOps is a complex (albeit wonderful) beast, which is quite hard to tame. It is, however, definitely worth it. I will elide the part about how to get started with Azure DevOps and assume that you already have an account (or know how to create one). Azure DevOps is available via <https://dev.azure.com>. We will first create a *Build Pipeline*, which will subsequently trigger a *Deploy Pipeline* to build, test and deploy everything to our App Service. 
