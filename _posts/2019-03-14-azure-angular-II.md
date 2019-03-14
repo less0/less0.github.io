@@ -57,11 +57,21 @@ Azure DevOps is a complex (albeit wonderful) beast, which is quite hard to tame.
 
 From the menu at the left, select *Pipelines&nbsp;&gt;&nbsp;Builds* and create a new build pipeline. You will first see the guide to create a pipeline with a standard configuration. 
 
-![Build pipeline assistant](images/build_pipeline_1.png)
+![Build pipeline assistant](/images/build_pipeline_1.png)
 
 Since I am hosting my code on GitLab, I had to create my pipeline using the *visual designer* (see the link in the image, just below *GitHub Enterprise*). This will take us to the following screen
 
-![Source in visual designer](images/build_pipeline_2.png)
+![Source in visual designer](/images/build_pipeline_2.png)
+
+You can now select *External Git* and create a new service connection (it will look a bit different, since I have already created an service connection). Just enter you credentials in the following form (for security reasons I have created a token in my GitLab account with the rights to read repos, only)
+
+![Form to set up external Git](/images/build_pipeline_3.png)
+
+Afterwards you can select the branch 
+
+![Source in visual designer](/images/build_pipeline_2.png)
+
+and confirm. In the last screen you can select the type of the pipeline. Since we'd like to build an .NET Core API, I selected ASP.NET Core which sets up an appropriate pipeline for the API. Everything we have to add is building and packaging the Angular application. 
 
 ## Footnotes
 
