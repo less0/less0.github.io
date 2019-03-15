@@ -91,7 +91,7 @@ You can now select *External Git* and create a new service connection (it will l
 
 {% include image.html url="/images/build_pipeline_3.png" description="Set up the external Git repo" number="4" %}
 
-Afterwards you can select the branch (see {% include imageref.html number="3" %}) and confirm. In the last screen you can select the type of the pipeline. Since we'd like to build an .NET Core API, I selected ASP.NET Core which sets up an appropriate pipeline for the API. Everything we have to add is building and packaging the Angular application. 
+Afterwards you can select the branch (see {% include refimage.html number="3" %}) and confirm. In the last screen you can select the type of the pipeline. Since we'd like to build an .NET Core API, I selected ASP.NET Core which sets up an appropriate pipeline for the API. Everything we have to add is building and packaging the Angular application. 
 
 {% include image.html url="/images/build_pipeline_4.png" description="The templates for the build pipeline" number="5" %}
 
