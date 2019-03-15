@@ -45,7 +45,7 @@ A *very* basic Angular App would run on an Azure App Service with (virtually) no
 
 Since I had a hard time deploying both my API and the Angular App to the same virtual application in my Azure App Service, I decided to deploy the API to another virtual application, named `/api`. To set up the virtual application, just visit *Settings&nbsp;&gt;&nbsp;Application settings* and scroll down to *Virtual applications and directories*.
 
-![Virtual Application configuration](/images/azure_web_app_virtual_applications.png)
+{% include image.html url="/images/azure_web_app_virtual_applications.png" description="Set up the virtual applications in the App Service" number="1" %}
 
 I've chosen the path *site\api* as the physical location of the application, but you are quite free to choose whatever you deem appropriate ([^1]). 
 
@@ -81,23 +81,19 @@ Azure DevOps is a complex (albeit wonderful) beast, which is quite hard to tame.
 
 From the menu at the left, select *Pipelines&nbsp;&gt;&nbsp;Builds* and create a new build pipeline. You will first see the guide to create a pipeline with a standard configuration. 
 
-{% include image.html url="/images/build_pipeline_1.png" description="The Build Pipeline Assistant" number="1" %}
+{% include image.html url="/images/build_pipeline_1.png" description="The Build Pipeline Assistant" number="2" %}
 
 Since I am hosting my code on GitLab, I had to create my pipeline using the *visual designer* (see the link in the image, just below *GitHub Enterprise*). This will take us to the following screen
 
-{% include image.html url="/images/build_pipeline_2.png" description="Setting the source from the visual designer" number="2" %}
+{% include image.html url="/images/build_pipeline_2.png" description="Setting the source from the visual designer" number="3" %}
 
 You can now select *External Git* and create a new service connection (it will look a bit different, since I have already created an service connection). Just enter you credentials in the following form (for security reasons I have created a token in my GitLab account with the rights to read repos, only)
 
-![Form to set up external Git](/images/build_pipeline_3.png)
+{% include image.html url="/images/build_pipeline_3.png" description="Set up the external Git repo" number="4" %}
 
-Afterwards you can select the branch 
+Afterwards you can select the branch (see {% include imageref.html number="3" %}) and confirm. In the last screen you can select the type of the pipeline. Since we'd like to build an .NET Core API, I selected ASP.NET Core which sets up an appropriate pipeline for the API. Everything we have to add is building and packaging the Angular application. 
 
-![Source in visual designer](/images/build_pipeline_2.png)
-
-and confirm. In the last screen you can select the type of the pipeline. Since we'd like to build an .NET Core API, I selected ASP.NET Core which sets up an appropriate pipeline for the API. Everything we have to add is building and packaging the Angular application. 
-
-![The Templates for the build pipelines](/images/build_pipeline_4.png)
+{% include image.html url="/images/build_pipeline_4.png" description="The templates for the build pipeline" number="5" %}
 
 ## Footnotes
 
