@@ -4,6 +4,7 @@ title:  "Angular App in Azure - Part II: Azure App Service and DevOps"
 category: "Software"
 tags: ["architecture", "azure", "angular"]
 draft: true
+excerpt_separator: <!--more-->
 ---
 
 [Part I: Project outline](/azure-angular)
@@ -11,6 +12,8 @@ draft: true
 This is the second blog post in my series about taking an Angular App to Azure. In my first blog post I gave a general [outline of the project](/azure-angular) now I'd like to write about how I employed hosting in an Azure App Service and about the Azure DevOps Pipelines to build and deploy the app.
 
 While I do have *some* code, yet, my backend code is but stubs that were created as examples by .NET Core. I don't think that posting any of it here will be helpful for anyone, hence this post will still be low on code. This will probably change with the following posts. 
+
+<!--more-->
 
 * * *
 
@@ -141,6 +144,12 @@ The default ASP .Net Core pipeline publishes the results from building the ASP .
 - *Artifact name*: drop
 
 Since the artifact name is set to drop, too, the contents from `coffeefriends\dist` will be added to *drop.zip* alongside to the API.
+
+{% include image.html url="build_pipeline_8.png" description="The contents of the *drop.zip*" number="8" %}
+
+{% include refimage.html number="8" %} shows the contents of the *drop.zip* file. The root contains the *api.zip* that in turn contains the API to be deployed to the App Service. The `./coffeefriends` path contains the built Angular App. 
+
+### The Release Pipeline
 
 ## Footnotes
 
