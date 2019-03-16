@@ -7,7 +7,7 @@ draft: false
 excerpt_separator: <!--more-->
 ---
 
-Developers love coffee and of course they love to explore new technologies (well, at least I do). I combined both and proudly present to you: *CoffeeFriends*. *CoffeeFriends* is a website ([^1]) to track your coffee consumption together with your peers. Like a social network ... with coffee.
+Developers love coffee and of course they love to explore new technologies (well, at least I do). I combined both and proudly present to you: *CoffeeFriends*. *CoffeeFriends* is a website to track your coffee consumption together with your peers. Like a social network ... with coffee.
 
 <!--more-->
 
@@ -19,7 +19,7 @@ I mainly started this project, to brush up my Angular and Azure skills. The tech
 - Azure Web App for serving both front- and back-end and
 - Azure DevOps Pipelines for CI/CD
 
-Since I want to spin up a *kind of* complete CI/CD process, you will eventually always find the current version at [https://coffeefriends.azurewebsites.net](https://coffeefriends.azurewebsites.net). Please bear with me, since I just started the project, it's not that much, yet. Just come back later. I'd like to reiterate that I'm not providing a service. This is just a pet project of mine and there won't be any guarantees or liabilities. I might shut down the website at any time, wipe all the data or do whatever I'd like to with it ([^2]). If it is down and you are interested in seeing the page in action, drop me a message (see contact options below).
+Since I want to spin up a *kind of* complete CI/CD process, you will eventually always find the current version at [https://coffeefriends.azurewebsites.net](https://coffeefriends.azurewebsites.net). Please bear with me, since I just started the project, it's not that much, yet. Just come back later. I'd like to stress that I'm not providing a service ([^1]). This is just a pet project of mine and there won't be any guarantees or liabilities. I might shut down the website at any time, wipe all the data or do whatever I'd like to with it ([^2]). If it is down and you are interested in seeing the page in action, drop me a message (see contact options below).
 
 During the development of the website I will try and write blog posts about certain aspects of the project, why I did what I did and how issues I encountered on my way have been solved. Since most of the tech stack is quite new to me, I will always be happy about comments, via pull-requests, Twitter, pigeon post, whatsoever. 
 
