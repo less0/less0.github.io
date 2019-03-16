@@ -83,6 +83,8 @@ From the menu at the left, select *Pipelines&nbsp;&gt;&nbsp;Builds* and create a
 
 {% include image.html url="/images/build_pipeline_1.png" description="The Build Pipeline Assistant" number="2" %}
 
+#### Settings up the source for fetching the source code
+
 Since I am hosting my code on GitLab, I had to create my pipeline using the *visual designer* (see the link in the image, just below *GitHub Enterprise*). This will take us to the following screen
 
 {% include image.html url="/images/build_pipeline_2.png" description="Setting the source from the visual designer" number="3" %}
@@ -91,13 +93,60 @@ You can now select *External Git* and create a new service connection (it will l
 
 {% include image.html url="/images/build_pipeline_3.png" description="Set up the external Git repo" number="4" %}
 
-Afterwards you can select the branch (see {% include refimage.html number="3" %}) and confirm. In the last screen you can select the type of the pipeline. Since we'd like to build an .NET Core API, I selected ASP.NET Core which sets up an appropriate pipeline for the API. Everything we have to add is building and packaging the Angular application. 
+Afterwards you can select the branch (see {% include refimage.html number="3" %}) and confirm. 
+
+#### Setting up the build pipeline for the .NET Core API
+
+In the last screen you can select the type of the pipeline. Since we'd like to build an .NET Core API, I selected ASP.NET Core which sets up an appropriate pipeline for the API. Everything we have to add is building and packaging the Angular application. 
 
 {% include image.html url="/images/build_pipeline_4.png" description="The templates for the build pipeline" number="5" %}
+
+##### Building the Angular App
+
+For my project I have chosen the following folder structure (this is important for building the Angular app):
+
+- `./api`: My .NET Core API
+- `./coffeefriends`: My Angular App
+
+In {% include refimage.html number="6" %} you see the Pipeline that was set up by Azure, just by telling it that I'd like to build a .NET Core app. Running the pipeline now would check out the Git repo and perform all steps necessary to build the API. 
+
+{% include image.html url="/images/build_pipeline_5.png" description="The pristine .NET Core Build Pipeliine" number="6" %}
+
+To build the Angular app there are 3 steps necessary:
+
+- Install Angular CLI
+- Restore the packages of the app
+- Build the app via Angular CLI
+
+It comes handy that Azure DevOps has predefined *npm* tasks we can use to install the Angular CLI and restore the packages. There is a button to add a build step (see {% include refimage.html number="6" %}). Searching for *npm* yields the results displayed in {% include refimage.html number="7" %}. 
+
+To install the Angular CLI and restore the packages, two *npm* build steps are required. The *Command* for the first one is set to *custom* with the custom command `install -g @angular/cli`, this will install the Angular CLI on the build agent. The *Command* for the second one remains at *install* (should be selected by default). Since the Angular App is located in `./coffeefriens/`, the `npm install` command has to be executed in that directory (since it is looking for a *packahe.json* file in the directory it is executed in).
+
+{% include image.html url="/images/build_pipeline_6.png" description="The task to build the Angular App" number="7" %}
+
+The task to actually build the Angular App is displayed in {% include refimage.html number="7" %}. It is a *Command Line* task, that runs the following commands
+
+```
+cd coffeefriends
+ng build --prod
+```
+
+to build the app in production configuration ([^2]). 
+
+#### Packaging
+
+The default ASP .Net Core pipeline publishes the results from building the ASP .NET Core API to an Artifact named *drop.zip*. I've added another *Publish Artifact* task with the following configuration:
+
+- *Path to publish*: `coffeefriends\dist` (This is the folder where the built Angular App is saved to)
+- *Artifact name*: drop
+
+Since the artifact name is set to drop, too, the contents from `coffeefriends\dist` will be added to *drop.zip* alongside to the API.
 
 ## Footnotes
 
 [^1]: I would like to remind the kind reader that I do not deem my solution the best one at any rage. What I present here is what worked best **for me** and I sincerely hope, that my explanations might help anyone, but if there is anything that can be improved, please feel free to contact me (see the footer of this page for my Twitter).
+
+[^2]: The distiction between development and production configuration will become crucial for accessing the API and for OpenID Connect authentication.
 
 [create App Service]: https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-dotnet
 [host angular app]: https://itnext.io/easy-way-to-deploy-a-angular-5-application-to-azure-web-app-using-vsts-pipelines-4a288b9deae1
