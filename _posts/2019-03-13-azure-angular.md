@@ -11,6 +11,8 @@ Developers love coffee and of course they love to explore new technologies (well
 
 <!--more-->
 
+[Part II: Azure App Service and DevOps](/azure-angular-ii)
+
 I mainly started this project, to brush up my Angular and Azure skills. The tech stack will be 
 
 - Angular (with Material) for the front-end
