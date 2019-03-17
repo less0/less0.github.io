@@ -151,6 +151,58 @@ Since the artifact name is set to drop, too, the contents from `coffeefriends\di
 
 ### The Release Pipeline
 
+Release pipelines are accessible via *Pipelines&nbsp;&gt;&nbsp;Releases*. When creating a new release pipeline we can select *Azure App Service deployment* which creates a default pipeline that deploys the .NET Core API to our root application.
+
+Before anything can be deployed, it's necessary to set up the Azure subscription and App Service name ({% include refimage.html number="9" %}).
+
+{% include image.html url="/images/release_pipeline_2.png" description="Setting up the deployment stage." number="9" %}
+
+#### Deploying the API
+
+Since I'd like to deploy my API to the virtual application at `/api`, I had to select that virtual application in the deployment task (see {% include refimage.html number="10" %})
+
+{% include image.html url="/images/release_pipeline_3.png" description="Set up the application to deploy the API to" number="10" %}
+
+Since the task had been set up correctly by Azure to deploy an .NET Core app, there is nothing left to do here.
+
+#### Deploying the Angular app
+ 
+Furthermore I had to set up another *Azure App Service Deploy* task to deploy the Angular app (see {% include refimage.html number="11" %} 
+
+{% include image.html url="/images/release_pipeline_4.png" description="Azure app deploy task" number="11" %}
+
+Since the Azure app should be deployed to the root of the App Service, the field *Virtual application* has to be left empty. The folder depends on the alias we are giving the artifact (see below), the name of the artifact and the name of the angular app. After the artifact for the release is set up, it's possible to browse for the correct folder.
+
+#### Set up the artifact
+
+Back in the pipeline view, it's now required to set up an artifact for the release pipeline (see {% include refimage.html number="12" %}).
+
+{% include image.html url="/images/release_pipeline_5.png" description="Add an artifact" number="12" %}
+
+To use the Artifact from the build pipeline, the type *Build* has to be selected. The following options are configurable:
+
+- The project to get the artifact from (defaults to the current project)
+- The build pipeline that builds the respective artifact
+- Which version of the artifact to use
+ - I've opted to *Latest*, but there are other possibilities, such as restricting the releases to certain tags, which would be useful for QA/staging environments
+- An alias for the artifact, should be safe to use the default here, unless you have more specific needs (multiple artifacts, etc.)
+
+{% include image.html url="/images/release_pipeline_6.png" description="Artifact configuration for CoffeeFriends" number="13" %}
+
+### Making it *continuous*
+
+While the pipelines are in place, there is nothing continuous about them, yet. They build and deploy CoffeeFriends, but only if I triggered them. Yikes! Since I'd like the CoffeeFriends website to reflect the current state of the project, I'd like to build and deploy on (virtually) every commit. 
+
+**Disclaimer:** While this is okay for a toy project like this, it would be totally unacceptable in any production website. Appropriate processes shall be employed to ensure that only appropriately tested code is deployed.
+
+The continuous integration has to be set up in the build pipeline. When editing the build pipeline, CI triggers are available on the *Triggers* tab, see {% include refimage.html number="14" %}
+
+{% include image.html url="/images/ci_cd_1.png" description="CI triggers on the build pipeline" number="14" %}
+
+For reasons unknown, the checkbox to enable CI was checked by default for me, but the build pipeline was not triggered on new commits. After unchecking the checkbox and then checking it again, it did work, however. This is sufficient for continuous integration to run, but we'd still have to trigger the deployment manually. Hence we have to set up a trigger for the release pipeline. Triggers on the release pipeline are available form the pipeline view on the build artifact (see {% include refimage.html number="15" %}).
+
+{% include image.html url="/images/ci_cd_2.png" description="CI triggers on the build pipeline" number="15" %}
+
 ## Footnotes
 
 [^1]: I would like to remind the kind reader that I do not deem my solution the best one at any rage. What I present here is what worked best **for me** and I sincerely hope, that my explanations might help anyone, but if there is anything that can be improved, please feel free to contact me (see the footer of this page for my Twitter).
@@ -160,3 +212,4 @@ Since the artifact name is set to drop, too, the contents from `coffeefriends\di
 [create App Service]: https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-dotnet
 [host angular app]: https://itnext.io/easy-way-to-deploy-a-angular-5-application-to-azure-web-app-using-vsts-pipelines-4a288b9deae1
 [angular iis configuration]: https://angular.io/guide/deployment#server-configuration
+[gitflow]: 
