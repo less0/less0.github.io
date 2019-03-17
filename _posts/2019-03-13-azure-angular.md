@@ -7,11 +7,11 @@ draft: false
 excerpt_separator: <!--more-->
 ---
 
+[Part II: Azure App Service and DevOps](/azure-angular-II)
+
 Developers love coffee and of course they love to explore new technologies (well, at least I do). I combined both and proudly present to you: *CoffeeFriends*. *CoffeeFriends* is a website to track your coffee consumption together with your peers. Like a social network ... with coffee.
 
 <!--more-->
-
-[Part II: Azure App Service and DevOps](/azure-angular-ii)
 
 I mainly started this project, to brush up my Angular and Azure skills. The tech stack will be 
 
