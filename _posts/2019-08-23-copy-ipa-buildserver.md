@@ -39,10 +39,10 @@ While the target is not that complicated (actually not complicated at all) this 
 <Project>
   <UsingTask TaskName="Microsoft.Build.Tasks.Copy" AssemblyFile="Xamarin.iOS.Tasks.dll"/>
   <Target Name="CopyIpa" AfterTargets="_CoreArchive">   
-      <Copy SessionId="$(BuildSessionId)" 
-	        SourceFiles="$(IpaPackagePath)" 
-			DestinationFiles="/Users/[username]/Appium/CurrentBuild.ipa" 
-			ContinueOnError="true" />
+    <Copy SessionId="$(BuildSessionId)" 
+          SourceFiles="$(IpaPackagePath)" 
+          DestinationFiles="/Users/[username]/Appium/CurrentBuild.ipa" 
+          ContinueOnError="true" />
   </Target>
 </Project>
 ```
@@ -66,8 +66,8 @@ The `AfterTargets` attribute is not mandatory in the sense of *MSBuild*, but cru
 ```xml
 <Copy SessionId="$(BuildSessionId)" 
       SourceFiles="$(IpaPackagePath)" 
-	  DestinationFiles="$(Home)/Appium/CurrentBuild.ipa" 
-	  ContinueOnError="true" />
+      DestinationFiles="$(Home)/Appium/CurrentBuild.ipa" 
+      ContinueOnError="true" />
 ```
 	
 This task copies a file on the build server (see above). Files paths may be relative (to the current build folder) or absolute. 
