@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Visual Studio 2017 (2019): Copying the Xamarin.iOS IPA file on the macOS buildserver automatically"
+title:  "Visual Studio 2017: Copying the Xamarin.iOS IPA file on the macOS buildserver with an MSBuild target"
 categories: ["Software", "MSBuild"]
 tags: ["xamarin", "testing", "msbuild" ]
 ---
@@ -13,7 +13,7 @@ I am currently in the process of implementing an improved software quality pipel
 
 **MSBuild Targets**: *"Targets group tasks together in a particular order [...]"* ([MSBuild Target documentation](https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-targets?view=vs-2019))
 
-We'll be using a target for MSBuild in order to copy our IPA once it is built. While you *could* implement the user defined target directly in your iOS apps `.csproj` file, I'd advise you *not* to, simply for the reason that it's easier to edit an imported `.targets` file, than the project file. Whenever you try to troubleshoot something, you'll thank me for that advise. I would ;)
+We'll be using a target for *MSBuild* in order to copy our IPA once it is built. While you *could* implement the user defined target directly in your iOS apps `.csproj` file, I'd advise you *not* to, simply for the reason that it's easier to edit an imported `.targets` file, than the project file. Whenever you try to troubleshoot something, you'll thank me for that advise. I would ;)
 
 Add a new file, named `CustomTargets.targets` to your iOS project (the name ain't that important, though, but it has to have *any* name), which we will later use to define our target. Since we'll need a root XML-tag anyway, add the following lines to the file (custom target files are *projects* in the lingo of *MSBuild*, don't care about it too much, we'll need this to import the file from our actual project file)
 
