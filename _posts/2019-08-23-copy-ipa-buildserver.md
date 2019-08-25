@@ -7,6 +7,8 @@ tags: ["xamarin", "testing", "msbuild" ]
 
 I am currently in the process of implementing an improved software quality pipeline incorporating automated end-to-end tests for our software development team. (At the moment the tests are run manually by our QA department, which is quite time-consuming.) As a proof of concept, I am implementing automated tests with [SpecFlow](https://specflow.org) and [Appium](http://appium.io) for our app project. In order to run the tests for the most recent version of the iOS app, I'd like to copy the latest `.ipa` file (I'll refer to this file as *IPA* in the following) to a specific directory to run the tests on this very build. This seems to be quite an uncommon task, since there is scarce information to be found on it online and the information I have been able to find is outdated or incomplete or both. 
 
+<!--more-->
+
 **Remarks:** The information provided holds if you build the iOS app from *Visual Studio* on a Windows development machine using a macOS build server. Supposedly the procedure is easier when building from *Visual Studio for Mac*, but I don't have any sound information on this issue. Furthermore I am assuming Visual Studio 2017, but having looked at the relevant files in Visual Studio 2019, I'd guess that it would work the same way.
 
 ### Extending your iOS project file 
