@@ -6,7 +6,9 @@ tags: ["xamarin", "testing", "msbuild", "visual studio" ]
 draft: true
 ---
 
-As I've elaborated in [this post](/copy-ipa-buildserver), I am trying to improve the internal QA of our software development team by introducing automated acceptance tests with [SpecFlow](https://specflow.org/) and [Appium](http://appium.io/). After succeeding to copy the iOS IPA on every build I faced the problem how to streamline the process for Android. The main issue was, that the `Build` target that is ran automatically does not build an `.apk`-file (*APK* in the following). The *APK* is built when the app shall be deployed to an device, but not when the app is just built. 
+As I've elaborated in [this post](/copy-ipa-buildserver), I am trying to improve the internal QA of our software development team by introducing automated acceptance tests with [SpecFlow](https://specflow.org/) and [Appium](http://appium.io/). After succeeding to copy the iOS IPA on every build I faced the problem how to streamline the process for Android. The main issue was, that the `Build` target that is ran automatically does not build an `.apk`-file (*APK* in the following). The *APK* is built when the app shall be deployed to an device, but not when the app is just built.
+
+<!--more-->
 
 ### The `SignAndroidPackage` *MSBuild* target
 
