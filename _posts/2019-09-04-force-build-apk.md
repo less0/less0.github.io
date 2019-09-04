@@ -13,7 +13,8 @@ As I've elaborated in [this post](/copy-ipa-buildserver), I am trying to improve
 Since the build process is definitely able to create an *APK* (see above), there has to be an *MSBuild* target for that, which I have been able to find in the `Xamarin.Android.Common.targets` file of Visual Studio (located in `C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\Xamarin\Android`). It's named `SignAndroidPackage` and is defined as
 
 ```xml
-<Target Name="SignAndroidPackage" DependsOnTargets="Build;Package;_Sign">
+<Target Name="SignAndroidPackage" 
+        DependsOnTargets="Build;Package;_Sign">
 </Target>
 ```
 
@@ -29,18 +30,23 @@ builds the files `myApp.apk` and `myApp-Signed.apk`. The latter is the one signe
 
 ### Building the *APK* from Visual Studio
 
-For quick iterations of my custom *MSBuild* target I created a `CustomTargets.targets` file. See [*Extending your iOS project file*](/copy-ipa-buildserver#extending-your-ios-project-file) on the details. It's pretty much the same for an Android project. Within this file I defined the following `Target`
+For quick iterations of my custom *MSBuild* target I created a `CustomTargets.targets` file. See [*Extending your iOS project file*](/copy-ipa-buildserver#extending-your-ios-project-file) on the details. It's pretty much the same for an Android project. Within that file I've defined a new `Target`
 
 ```xml
 <Project>
-    <Target Name="ForceBuildApk" AfterTargets="Build" DependsOnTargets="SignAndroidPackage">
+    <Target Name="ForceBuildApk" 
+            AfterTargets="Build" 
+            DependsOnTargets="SignAndroidPackage">
     </Target>
 </Project>
 ```
 
 The `Name` attribute is mandatory for unambiguously identifying the target. This should have no value that is occupied by another target, since this would overwrite the existing target. 
 
-By settings the `AfterTargets` attribute to `Build` the `ForceBuildApk` target is always run after the `Build` target is completed. 
+By settings the `AfterTargets` attribute to `Build` the `ForceBuildApk` target is always run after the `Build` target is completed.
 
 The `DependsOnTargets` attribute causes the `SignAndroidPackage` to be run before `ForceBuildApk` is run. Therefor - since `ForceBuildApk` is always run after `Build` - this target will force `SignAndroidPackage` to be run after `Build`, hence create our *APK* with each build, which is pretty much what I wanted to achieve.
 
+### Wrap up
+
+While (again) I thought, that this should be pretty straight-forward, building an *APK* automatically is something very scarce information can be found on. There are some resources, but they are scoped a bit differently, hence they served me little (besides pushing me in the right direction). Hopefully this post can fill that gap and will be useful for someone else.
