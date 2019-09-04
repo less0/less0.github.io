@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Force Visual studio to build an APK for an Xamarin.Forms project"
+title:  "Force Visual studio to build an APK for every build of an Xamarin.Android project"
 categories: ["Software", "MSBuild", "Visual Studio"]
 tags: ["xamarin", "testing", "msbuild", "visual studio" ]
 ---
