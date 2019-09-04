@@ -26,7 +26,9 @@ Add a new file, named `CustomTargets.targets` to your iOS project (the name ain'
 
 Save the iOS project and unload it, in order to load the project file (of the iOS project) in the editor. Add the following line (basically somewhere, but I personally prefer the end of the file, just before the `</Project>` tag):
 
-    <Import Project="CustomTargets.targets" />
+```xml
+<Import Project="CustomTargets.targets" />
+```
 	
 This will import the `.targets` file, which will render the custom targets we define within that file available for our build process. Now you may reload the iOS project file.
 
@@ -52,7 +54,9 @@ While the target is not that complicated (actually not complicated at all) this 
 
 Since I've already explained it above, I'll omit the `<Project>` and `</Project>` lines.
 
-    <UsingTask TaskName="Microsoft.Build.Tasks.Copy" AssemblyFile="Xamarin.iOS.Tasks.dll"/>
+```xml
+<UsingTask TaskName="Microsoft.Build.Tasks.Copy" AssemblyFile="Xamarin.iOS.Tasks.dll"/>
+```
 	
 This imports the `Copy` task from `Xamarin.iOS.Tasks.dll`. Without this line, *MSBuild* would use the default `Copy` task, which would attempt to copy files on our local machine, but we'd like to copy a file that lives on the build server to another folder on the same machine. 
 
