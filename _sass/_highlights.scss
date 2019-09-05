@@ -1,5 +1,10 @@
 
 .highlight {
+
+  /*overflow: auto;*/
+}
+
+div.highlight {
   background-color: #efefef;
   padding: 7px 7px 7px 7px;
   border: 1px solid #ddd;
@@ -8,16 +13,8 @@
   -webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
   box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
   margin: 20px 0 20px 0;
-  /*overflow: auto;*/
 }
-/* 
-div.highlight {
-	box-shadow: none;
-	border: none;
-	background-color: transparent;
-	padding: 0px;
-}
- */
+ 
  
 code {
   font-family:'Bitstream Vera Sans Mono','Courier', monospace;
