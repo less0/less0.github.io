@@ -3,6 +3,7 @@ layout: post
 title:  "Force Visual studio to build an APK for every build of a Xamarin.Android project"
 categories: ["Software", "MSBuild", "Visual Studio"]
 tags: ["xamarin", "testing", "msbuild", "visual studio" ]
+draft: true
 ---
 
 As I've elaborated in [this post](/copy-ipa-buildserver), I am trying to improve the internal QA of our software development team by introducing automated acceptance tests with [SpecFlow](https://specflow.org/) (and [Appium](http://appium.io/) for our app). After succeeding to copy the iOS IPA on every build I faced the problem how to streamline the process for Android, particularly how to build an `.apk`-file (*APK* in the following) although the app is not deployed to a device.
