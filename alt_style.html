@@ -38,11 +38,12 @@ permalink: /alt_style/
 			</div>
 		  </section>
 		  <section id="blog" class="secondary-color height5 flex-container">
+			<header class="header">Blog Posts</header>
 			{% for post in site.posts %}
 				{% unless post.draft %}
 				<article class="post">
 
-				  <header class="header"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></header>
+				  <header class="header2"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></header>
 
 				  <div class="entry">
 					{{ post.excerpt }}

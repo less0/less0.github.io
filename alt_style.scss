@@ -217,9 +217,15 @@ img.background
   margin: 0px;
 }
 
+.header2
+{
+font-size: 24pt;
+}
+
 .header>a
 {
   text-decoration: none;
+  color: inherit;
 }
 
 .fab
