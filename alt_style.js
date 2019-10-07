@@ -13,18 +13,17 @@ document.addEventListener('mousedown', function (event) {
 }, false);
 
 $(document).on("scroll", event => {
-	var currentSection = $('section').find(element =>
-	{
-		return $(element).position().top <= $(document).scrollTop();
-	});
+	var currentSection = $('section').filter((index, element) => $(element).position().top <= $(document).scrollTop()+50).last()[0];
 	
-	var matchingNavigationEntry = $("nav>a").find(element => {
-		var href = $(element).attr('href');
-		return href.substring(href.indexOf("#")+1) == $(currentSection).id
-		}
-	);
+	var matchingNavigationEntry = $("a").filter((index, element) => {
+	var href = $(element).attr('href');
+	return href.substring(href.indexOf("#")+1) == currentSection.id;
+		})[0];
+  if(!$(matchingNavigationEntry).hasClass("selected"))
+    {
 	$("nav>a").removeClass("selected");
 	$(matchingNavigationEntry).addClass("selected");
+    }
 });
 
 $("nav>a").on("click", (obj) =>
