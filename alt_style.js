@@ -12,6 +12,23 @@ document.addEventListener('mousedown', function (event) {
   }
 }, false);
 
+$(document).on("scroll", event => {
+	var currentSection = $('section').find(element =>
+	{
+		return $(element).top() <= $(document).scrollTop();
+	});
+	
+	var matchingNavigationEntry = $("nav>a").find(element => $(element).href.substring(1) == $(currentSection).id);
+	$("nav>a").removeClass("selected");
+	$(matchingNavigationEntry).addClass("selected");
+});
+
+$("nav>a").on("click", (obj) =>
+             {
+  $("nav>a").removeClass("selected");
+  $(obj.target).addClass("selected");
+});
+
 var particles = {
     "particles": {
         "number": {
@@ -124,11 +141,3 @@ var particles = {
 };
 
 particlesJS("particles", particles);
-
-$("nav>a").on("click", (obj) =>
-             {
-  console.log("click");
-  $("nav>a").removeClass("selected");
-  console.log(obj);
-  $(obj.target).addClass("selected");
-});
