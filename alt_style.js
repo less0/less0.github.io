@@ -15,6 +15,8 @@ document.addEventListener('mousedown', function (event) {
 $(document).on("scroll", event => {
 	var currentSection = $('section').filter((index, element) => $(element).position().top <= $(document).scrollTop()+50).last()[0];
 	
+	console.log(event);
+	
 	var matchingNavigationEntry = $("a").filter((index, element) => {
 	var href = $(element).attr('href');
 	return href.substring(href.indexOf("#")+1) == currentSection.id;
