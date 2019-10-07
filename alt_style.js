@@ -21,7 +21,7 @@ $(document).on("scroll", event => {
 	var matchingNavigationEntry = $("nav>a").find(element => {
 		var href = $(element).attr('href');
 		return href.substring(href.indexOf("#")+1) == $(currentSection).id
-		};
+		}
 	);
 	$("nav>a").removeClass("selected");
 	$(matchingNavigationEntry).addClass("selected");
