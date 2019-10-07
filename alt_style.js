@@ -15,10 +15,10 @@ document.addEventListener('mousedown', function (event) {
 $(document).on("scroll", event => {
 	var currentSection = $('section').find(element =>
 	{
-		return $(element).top() <= $(document).scrollTop();
+		return element.position().top <= $(document).scrollTop();
 	});
 	
-	var matchingNavigationEntry = $("nav>a").find(element => $(element).href.substring(1) == $(currentSection).id);
+	var matchingNavigationEntry = $("nav>a").find(element => element.href.substring(element.href.indexOf("#")+1) == $(currentSection).id);
 	$("nav>a").removeClass("selected");
 	$(matchingNavigationEntry).addClass("selected");
 });
