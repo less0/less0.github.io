@@ -246,7 +246,7 @@ font-size: 24pt;
 
 .header>a:hover
 {
-	color: mix($color-primary-text, #7f7f7f, 50%);
+	opacity: .5;
 }
 
 
@@ -290,13 +290,14 @@ font-size: 24pt;
   font-size: 24pt;
 }
 
-#projects-portfolio
+.projects-portfolio
 {
   position: relative;
   display: flex;
   justify-content: space-around;
   width: 80%;
   flex-wrap: wrap;
+  padding: 20px;
 }
 
 .project-tile
@@ -339,11 +340,6 @@ a.project-tile:hover
   bottom: 0px;
   width: 100%;
   height: auto;
-}
-
-#projects-portfolio
-{
-  padding: 20px;
 }
 
 .logo
