@@ -42,9 +42,9 @@ permalink: /alt_style/
 			<div class="projects-portfolio">
 			{% for post in site.posts %}
 				{% unless post.draft %}
-				<article class="post project-tile">
+				<article class="post">
 
-				  <header class="header2 project-title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></header>
+				  <header class="header2"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></header>
 
 				  <div class="entry">
 					{{ post.excerpt }}

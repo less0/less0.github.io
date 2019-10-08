@@ -232,6 +232,11 @@ img.background
   margin: 0px;
 }
 
+.post
+{
+	max-width: 740px;
+}
+
 .header2
 {
 font-size: 24pt;
@@ -244,7 +249,7 @@ font-size: 24pt;
   opacity: 1;
 }
 
-.header>a:hover
+.header2>a:hover
 {
 	opacity: .5;
 }
