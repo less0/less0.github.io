@@ -71,6 +71,17 @@ body
   margin: 0px;
 }
 
+a
+{
+	color: inherit;
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
 nav
 {
   z-index: 100;
@@ -227,6 +238,12 @@ font-size: 24pt;
   text-decoration: none;
   color: inherit;
 }
+
+.header>a:hover
+{
+	color: mix($color-primary-text, #7f7f7f, 50%);
+}
+
 
 .fab
 {
