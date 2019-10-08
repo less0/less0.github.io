@@ -6,6 +6,8 @@ $("#hamburger").on("click", element => {
   $("nav").toggleClass("visible");
 });
 
+var disableHighlightingNavitemsOnScroll = false;
+
 document.addEventListener('mousedown', function (event) {
   if (event.detail > 1) {
     event.preventDefault();
@@ -13,9 +15,12 @@ document.addEventListener('mousedown', function (event) {
 }, false);
 
 $(document).on("scroll", event => {
-	var currentSection = $('section').filter((index, element) => $(element).position().top <= $(document).scrollTop()+50).last()[0];
+	if(disableHighlightingNavitemsOnScroll)
+	{
+		return;
+	}
 	
-	console.log(event);
+	var currentSection = $('section').filter((index, element) => $(element).position().top <= $(document).scrollTop()+50).last()[0];
 	
 	var matchingNavigationEntry = $("a").filter((index, element) => {
 	var href = $(element).attr('href');
@@ -28,8 +33,13 @@ $(document).on("scroll", event => {
     }
 });
 
+$(document).on("wheel mousewheel", event => {
+	disableHighlightingNavitemsOnScroll = false;
+});
+
 $("nav>a").on("click", (obj) =>
              {
+  disableHighlightingNavitemsOnScroll = true;
   $("nav>a").removeClass("selected");
   $(obj.target).addClass("selected");
 });
