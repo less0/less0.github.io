@@ -176,7 +176,7 @@ section
 {
   position: relative;
   font-family: "Quicksand", sans-serif;
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
   width: 100%;
   margin: 0px;
   padding: 50px;
