@@ -177,7 +177,7 @@ section
   position: relative;
   font-family: "Quicksand", sans-serif;
   min-height: calc(100vh - 100px);
-  width: 100%;
+  width: calc(100% - 100px);
   margin: 0px;
   padding: 50px;
   left: 0px;
@@ -188,8 +188,8 @@ section
 
 .flex-container
 {
-  min-height: 100vh;
-  width: 100%;
+  min-height: calc(100vh-100px);
+  width: calc(100%-100px);
   display: flex;
   flex-direction: column;
   align-items: center;
