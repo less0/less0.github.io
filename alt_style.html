@@ -59,16 +59,14 @@ permalink: /alt_style/
 		  <section id="projects" class="tertiary-color height4 flex-container">
 			<header class="header">Selected Projects</header>
 			<div class="projects-portfolio">
+			{% for project in site.projects %}
 			  <a href="#" class="project-tile">
-				<div class="project-title">Awesome project</div>
-				<div>Here go the details</div>
-				<img class="project-image" src="https://loremflickr.com/g/400/400/tech?random=2">
+				<div class="project-title">{{ project.name }}</div>
+				<div>{{ project.summary }}</div>
+				<img class="project-image" src="{{ project.image }}">
+				<!-- <img class="project-image" src="https://loremflickr.com/g/400/400/tech?random=2"> -->
 			  </a>
-			  <a href="#" class="project-tile">
-				<div class="project-title">Awesome project</div>
-				<div>Here go the details</div>
-				<img class="project-image" src="https://loremflickr.com/g/400/400/tech?random=1">
-			  </a>
+			{% endfor %}
 			</div>
 		  </section>
 		  <section id="contact" class="secondary-color height3 flex-container">
