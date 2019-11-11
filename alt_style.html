@@ -72,6 +72,9 @@ permalink: /alt_style/
 		  <section id="contact" class="secondary-color height3 flex-container">
 			<div>Feel free to drop me a Message.</div>
 			<div id="channels">
+			{% for contact in site.contact %}
+				<a href="{{ contact.link }}" class="fab {{ contact.icon }}" target="_blank"></a>
+			{% endfor %}
 			  <a href="#" class="fab fa-github"></a>
 			  <a href="#" class="fab fa-twitter"></a>
 			  <a href="#" class="fab fa-stack-overflow"></a>

@@ -74,6 +74,7 @@ sass:
   
 collections:
   - projects 
+  - contact
 
 # Use the following plug-ins
 gems:
