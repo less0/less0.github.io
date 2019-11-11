@@ -315,13 +315,15 @@ font-size: 24pt;
   padding: 0px;
   margin: 10px;
   border-radius: 5px;
-  display: block;
+  display: flex;
   text-decoration: none;
   text-align: center;
   height: auto;
   opacity: 1;
   position: relative;
   width: 400px;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 a.project-tile:hover
